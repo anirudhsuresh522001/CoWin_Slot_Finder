@@ -52,9 +52,11 @@ submit.addEventListener("click",function(){
                 var hospitalValue=data["centers"][i]["name"]
                 var dateofslotValue=data["centers"][i]["sessions"][j]["date"]
                 var minAgeLimit=data["centers"][i]["sessions"][j]["min_age_limit"]
-                if(slotsValue>0&&minAgeLimit===18)
+                var dose1=data["centers"][i]["sessions"][j]["available_capacity_dose1"]
+                var dose2=data["centers"][i]["sessions"][j]["available_capacity_dose2"]
+                if(slotsValue>=0&&minAgeLimit===18)
                 {
-                    content.innerHTML+="<h3>"+hospitalValue+"<br>"+dateofslotValue+"<br><a href='https://selfregistration.cowin.gov.in/' target='_blank'>"+slotsValue+" Slots Open</a></h3><br><br>";
+                    content.innerHTML+="<h3>"+hospitalValue+"<br>"+dateofslotValue+"<br><a href='https://selfregistration.cowin.gov.in/' target='_blank'>"+slotsValue+" Slots Open</a></h3>"+"Dose 1: "+ dose1+" "+"Dose 2: "+dose2+"<br><br>";
                     flag=1;
                 }
 
