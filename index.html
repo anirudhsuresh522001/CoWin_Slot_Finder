@@ -12,7 +12,12 @@
     <div class="Heading"><h1>CoWin Vaccination Slot Finder</h1></div>
     <div class="input">
 
-        
+        <label for="date">
+            <h2>Select Date:</h2>
+        </label>
+        <input type="date" id="date" required><br>
+
+
         <h2>State ID:</h2>
         <input type="text" class="state" placeholder="Enter State name" list="states" required><br>
         <datalist id="states">
@@ -56,18 +61,15 @@
             <option value="37">Daman and Diu</option>
         </datalist>
 
+        
+
         <h2>District ID:</h2>
         <input type="text" class="districtname" placeholder="Enter district ID" required>
         <div class="display">
             <p class="district"></p>
         </div>
 
-
-        <label for="date"><h2>Select Date:</h2></label>
-        <input type="date" id="date" required><br>
-
         <input type="submit" value="Search" class="submit">
-
 
         <div class="display">
             <p class="content"></p><br>

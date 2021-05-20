@@ -23,6 +23,7 @@ districtname.addEventListener("click",function(){
     fetch('https://cdn-api.co-vin.in/api/v2/admin/location/districts/'+state.value+'')
     .then(response=>response.json())
     .then(data=>{
+        district.innerHTML=""
         console.log(data)
         var i;
         for(i=0;i<37;i++)
