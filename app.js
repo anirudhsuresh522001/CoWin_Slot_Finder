@@ -51,7 +51,8 @@ submit.addEventListener("click",function(){
                 var slotsValue=data["centers"][i]["sessions"][j]["available_capacity"]
                 var hospitalValue=data["centers"][i]["name"]
                 var dateofslotValue=data["centers"][i]["sessions"][j]["date"]
-                if(slotsValue>0)
+                var minAgeLimit=data["centers"][i]["sessions"][j]["min_age_limit"]
+                if(slotsValue>0&&minAgeLimit===18)
                 {
                     content.innerHTML+="<h3>"+hospitalValue+"<br>"+dateofslotValue+"<br><a href='https://selfregistration.cowin.gov.in/' target='_blank'>"+slotsValue+" Slots Open</a></h3><br><br>";
                     flag=1;
