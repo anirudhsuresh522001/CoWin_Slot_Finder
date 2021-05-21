@@ -11,6 +11,7 @@ var districtname=document.querySelector(".districtname")
 //Output Variables
 var content=document.querySelector(".content");
 var district=document.querySelector(".districtnames");
+var stateoutput=document.querySelector(".statesoutput");
 
 function formatDate(date){
     var dArr=date.toString().split("-");
@@ -19,16 +20,32 @@ function formatDate(date){
 
 
 
+state.addEventListener("click",function(){
+    stateoutput.innerHTML=""
+    fetch("https://cdn-api.co-vin.in/api/v2/admin/location/states")
+    .then(response=>response.json())
+    .then(data=>{
+        var i;
+        for(i=0;i<37;i++)
+        {
+            stateoutput.innerHTML+="<option value="+data["states"][i]["state_id"]+">"+data["states"][i]["state_name"]+"</option><br>"
+        }
+
+    })
+})
+
+
+
 districtname.addEventListener("click",function(){
     fetch('https://cdn-api.co-vin.in/api/v2/admin/location/districts/'+state.value+'')
     .then(response=>response.json())
     .then(data=>{
         district.innerHTML=""
-        console.log(data)
         var i;
-        for(i=0;i<37;i++)
+        console.log(data["districts"].length)
+        for(i=0;i<=data["districts"].length;i++)
         {
-            district.innerHTML+="<option value="+data["districts"][i]["district_id"]+">"+data["districts"][i]["district_name"]+"</option>"+"<br>"
+            district.innerHTML+="<option value="+data["districts"][i]["district_id"]+">"+data["districts"][i]["district_name"]+"</option><br>"
         }
         
     })
