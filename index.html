@@ -7,6 +7,7 @@
     <title>CoWin Slot Notifier</title>
     <link rel="stylesheet" href="style.css">
     
+    
 </head>
 <body>
     <div class="Heading"><h1>CoWin Vaccination Slot Finder For 18+</h1></div>
@@ -63,11 +64,24 @@
 
         
 
-        <h2>District ID:</h2>
+
+        <input type="text" class="districtname" placeholder="Enter district name" list="districts" required><br>
+        <datalist id="districts">
+            <div class="districtnames">
+                <option value="" disabled selected>Select State</option>
+            </div>
+        </datalist>
+
+
+
+
+
+
+       <!-- <h2>District ID:</h2>
         <input type="text" class="districtname" placeholder="Enter district ID" required>
         <div class="display">
             <p class="district"></p>
-        </div>
+        </div>-->
 
         <input type="submit" value="Search" class="submit">
 

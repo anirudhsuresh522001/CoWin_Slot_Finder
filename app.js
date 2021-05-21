@@ -10,7 +10,7 @@ var districtname=document.querySelector(".districtname")
 
 //Output Variables
 var content=document.querySelector(".content");
-var district=document.querySelector(".district");
+var district=document.querySelector(".districtnames");
 
 function formatDate(date){
     var dArr=date.toString().split("-");
@@ -28,14 +28,14 @@ districtname.addEventListener("click",function(){
         var i;
         for(i=0;i<37;i++)
         {
-            district.innerHTML+=data["districts"][i]["district_id"]+"  -  "+data["districts"][i]["district_name"]+"<br>"
+            district.innerHTML+="<option value="+data["districts"][i]["district_id"]+">"+data["districts"][i]["district_name"]+"</option>"+"<br>"
         }
         
     })
 })
 
 
-submit.addEventListener("click",function(){    
+submit.addEventListener("click",function(){  
     district.innerHTML=""
     fetch('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+districtname.value+'&date='+formatDate(date.value)+'')
     .then(response=>response.json())
@@ -54,7 +54,7 @@ submit.addEventListener("click",function(){
                 var minAgeLimit=data["centers"][i]["sessions"][j]["min_age_limit"]
                 var dose1=data["centers"][i]["sessions"][j]["available_capacity_dose1"]
                 var dose2=data["centers"][i]["sessions"][j]["available_capacity_dose2"]
-                if(slotsValue>=0&&minAgeLimit===18)
+                if(slotsValue>0&&minAgeLimit===18)
                 {
                     content.innerHTML+="<h3>"+hospitalValue+"<br>"+dateofslotValue+"<br><a href='https://selfregistration.cowin.gov.in/' target='_blank'>"+slotsValue+" Slots Open</a></h3>"+"Dose 1: "+ dose1+" "+"Dose 2: "+dose2+"<br><br>";
                     flag=1;
